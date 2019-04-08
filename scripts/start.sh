@@ -38,6 +38,7 @@ fi
 
 # 3. Create docker network
 docker network create $NETWORK $NETWORK_OPTIONS
+docker network create $SERVICE_NETWORK $SERVICE_NETWORK_OPTIONS
 
 # 4. Download the latest version of nginx.tmpl
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
