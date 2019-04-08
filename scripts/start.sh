@@ -46,6 +46,6 @@ curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > n
 docker-compose pull
 
 # 6. Start proxy
-docker-compose up
+docker-compose up -d
 
 exit 0
