@@ -18,10 +18,18 @@ esac
 done
 
 # 1. Check if .env file exists
-if [ "${DEFAULT}" ]; then
-    ENVPATH="./.env.default"
-else
-    ENVPATH="./.env"
+ENVPATH="./.env"
+ENVPATH_DEFAULT="./.env.default"
+
+if [ "${DEFAULT}" = "YES" ]; then
+    if [ -e "${ENVPATH}" ]; then
+        read -p "File .env exist, are you sure copy .env.default into .env (y/n)? " yn
+        case $yn in
+            [Yy]* ) ;;
+            * ) echo "Abort"; exit 1;;
+        esac
+    fi
+    cp "${ENVPATH_DEFAULT}" "${ENVPATH}"
 fi
 
 if [ -e "${ENVPATH}" ]; then
